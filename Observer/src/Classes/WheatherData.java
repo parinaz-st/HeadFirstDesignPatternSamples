@@ -54,6 +54,7 @@ public class WheatherData implements ISubject {
         this.temperture = temperture;
         this.pressure = pressure;
         this.humidity = humidity;
+        measurementChanged();
     }
 
     public void setObserverList(List<IObserver> observerList) {

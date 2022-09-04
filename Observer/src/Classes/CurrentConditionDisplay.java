@@ -5,15 +5,24 @@ import Interfaces.IObserver;
 
 public class CurrentConditionDisplay implements IObserver, IDisplay {
     private float temperture;
+
+    public CurrentConditionDisplay(WheatherData wheatherData) {
+        this.wheatherData = wheatherData;
+        wheatherData.registerObserver(this);
+    }
+
+    public CurrentConditionDisplay() {
+    }
+
     private  float pressure;
     private float humidity;
     private WheatherData wheatherData;
 
 
     @Override
-    public void display(float temperture, float pressure, float humidity) {
-        System.out.println("Current Temperture is : " + temperture
-        + "current pressure is: " + pressure + "current Humidity is: " + humidity);
+    public void display() {
+        System.out.println(" (Display1) Current Temperture is : " + temperture
+        + " ,current pressure is: " + pressure + " ,current Humidity is: " + humidity);
 
     }
 
@@ -22,7 +31,7 @@ public class CurrentConditionDisplay implements IObserver, IDisplay {
         this.temperture = temperture;
         this.pressure = pressure;
         this.humidity = humidity;
-        display(temperture, pressure, humidity);
+        display();
     }
 
     public float getTemperture() {
